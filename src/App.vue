@@ -1,6 +1,6 @@
 <template>
   <div class="page-container">
-    <md-app md-waterfall md-mode="overlap">
+    <md-app md-waterfall md-mode="overlap" class="app-container">
       <md-app-toolbar class="md-primary md-large">
         <div class="md-toolbar-row">
           <md-button
@@ -20,12 +20,12 @@
         </md-toolbar>
 
         <md-list>
-          <md-list-item>
+          <md-list-item to="/" @click="menuVisibility = !menuVisibility">
             <md-icon>move_to_inbox</md-icon>
             <span class="md-list-item-text">Inbox</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item href="https://google.com" target="_blank">
             <md-icon>send</md-icon>
             <span class="md-list-item-text">Sent Mail</span>
           </md-list-item>
@@ -35,46 +35,23 @@
             <span class="md-list-item-text">Trash</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item to="/about" @click="menuVisibility = !menuVisibility">
             <md-icon>error</md-icon>
             <span class="md-list-item-text">Spam</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
 
-      <md-app-content>
-        <img alt="Vue logo" src="./assets/logo.png" />
-        <Home />
+      <md-app-content class="app-content">
+        <router-view />
+
       </md-app-content>
     </md-app>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import VueMaterial from "vue-material";
-import "vue-material/dist/vue-material.min.css";
-import "vue-material/dist/theme/default.css";
-import "material-design-icons-iconfont/dist/material-design-icons.css";
-import Home from "./components/Home.vue";
+<script lang="ts" src="./App.ts">
 
-Vue.use(VueMaterial);
-
-@Component({
-  components: {
-    Home,
-  },
-})
-export default class App extends Vue {
-  private menuVisible: boolean = false;
-
-  get menuVisibility(): boolean {
-    return this.menuVisible;
-  }
-  set menuVisibility(value: boolean) {
-    this.menuVisible = value;
-  }
-}
 </script>
 
 <style>
@@ -85,5 +62,10 @@ export default class App extends Vue {
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+
+.page-container > .app-container
+{
+  height: 100vh;
 }
 </style>
