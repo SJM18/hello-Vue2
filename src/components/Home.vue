@@ -1,7 +1,13 @@
 <template>
-  <div id="home">Helló {{ Msg }}
-<md-button class="md-raised md-primary" :md-ripple="true" @click="Msg = 'alma'">Kombájn</md-button>
-
+  <div id="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    Helló {{ Msg }}
+    <md-button
+      class="md-raised md-primary"
+      :md-ripple="true"
+      @click="Msg = 'alma'"
+      >Kombájn</md-button
+    >
   </div>
 </template>
 
